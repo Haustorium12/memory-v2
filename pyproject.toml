@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "memory-v2"
+version = "1.0.0"
+description = "Brain-inspired persistent memory for AI coding assistants"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [{name = "Sean Pembroke"}]
+keywords = [
+    "memory", "ai", "mcp", "act-r", "knowledge-graph",
+    "sqlite", "llm", "claude", "embeddings", "cognitive-science",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Database",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "fastmcp>=2.0",
+    "numpy>=1.24",
+    "networkx>=3.0",
+    "ollama>=0.4",
+    "sqlite-vec>=0.1",
+]
+
+[project.optional-dependencies]
+graph = ["python-igraph>=0.11", "leidenalg>=0.10", "pyvis>=0.3"]
+dev = ["pytest>=8.0", "pytest-cov", "ruff"]
+all = ["memory-v2[graph,dev]"]
+
+[project.scripts]
+memory-v2 = "memory_v2.cli:main"
+memory-v2-server = "memory_v2.server:run"
+memory-v2-build-kg = "memory_v2.build_kg:main"
+
+[project.urls]
+Homepage = "https://github.com/Haustorium12/memory-v2"
+Documentation = "https://github.com/Haustorium12/memory-v2/tree/main/docs"
+Issues = "https://github.com/Haustorium12/memory-v2/issues"
+"Predecessor (v1)" = "https://github.com/Haustorium12/claude-memory"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

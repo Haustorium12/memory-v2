@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "memory-v2": {
+      "command": "python",
+      "args": ["-m", "memory_v2.server"],
+      "env": {
+        "MEMORY_V2_DB": "~/.memory-v2/memory.db",
+        "MEMORY_V2_VAULT": "~/notes"
+      }
+    }
+  }
+}
