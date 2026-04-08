@@ -12,6 +12,49 @@
 
 ---
 
+## Why memory-v2?
+
+Most AI memory systems are just databases with a search API. memory-v2 is a **cognitive architecture** -- it models how human memory actually works.
+
+| Feature | memory-v2 | Flat-file / CLAUDE.md | Claude-brain | Zep / Graphiti |
+|---------|-----------|----------------------|--------------|----------------|
+| Search | Hybrid BM25 + vector (fused) | None / grep | FTS5 keyword (auto) + vector (manual) | Vector + graph |
+| Ranking | ACT-R activation (cognitive science) | None | FTS5 rank * recency | Recency + embedding similarity |
+| Forgetting | FadeMem decay (STM/LTM promotion) | Never forgets, overflows | Never forgets | TTL-based expiry |
+| Knowledge structure | Graph (Leiden communities, PPR) | Flat markdown | Flat tables | Graph (Graphiti) |
+| Consolidation | CogCanvas 6-step compression | Manual | None | None |
+| Governance | Protected memories (immune to decay) | None | None | None |
+| Multi-agent | Authority chains, conflict detection | None | None | None |
+| Privacy | 100% local (Ollama, zero API keys) | Local | Local | Cloud or self-hosted |
+| MCP tools | 17 | 0 | Read-only MCP | Varies |
+
+**Get running in 60 seconds:**
+
+```bash
+# Install
+pip install memory-v2
+
+# Start the MCP server
+memory-v2-server --db ~/memory.db
+
+# Or add to Claude Code settings.json
+```
+
+```json
+{
+  "mcpServers": {
+    "memory": {
+      "command": "memory-v2-server",
+      "args": ["--db", "~/memory.db"]
+    }
+  }
+}
+```
+
+Your AI assistant now has persistent memory that survives compactions, decays gracefully, and builds a knowledge graph as you work.
+
+---
+
 ## Abstract
 
 **memory-v2** is a cognitively-grounded persistent memory system designed for AI coding assistants operating over long-lived, multi-session workflows. It replaces the first-generation [claude-memory](https://github.com/Haustorium12/claude-memory) system with a ground-up rewrite that fuses techniques from cognitive psychology (ACT-R activation theory, power-law forgetting), information retrieval (BM25/vector hybrid search with Reciprocal Rank Fusion), and graph-based knowledge representation (Leiden community detection, Personalized PageRank retrieval) into a single SQLite-backed store.
@@ -24,6 +67,7 @@ memory-v2 was built by a practitioner who ran 59 compaction cycles on the v1 sys
 
 ## Table of Contents
 
+- [Why memory-v2?](#why-memory-v2)
 - [Abstract](#abstract)
 - [Architecture Overview](#architecture-overview)
 - [Theoretical Foundations](#theoretical-foundations)
