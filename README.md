@@ -6,13 +6,17 @@
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
   <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.9%2B-blue.svg" alt="Python 3.9+"></a>
-  <a href="https://pypi.org/project/memory-v2/"><img src="https://img.shields.io/pypi/v/memory-v2.svg" alt="PyPI"></a>
+  <a href="https://pypi.org/project/memory-v2-hx/"><img src="https://img.shields.io/badge/pypi-memory--v2--hx-orange.svg" alt="PyPI"></a>
   <a href="https://github.com/Haustorium12/memory-v2"><img src="https://img.shields.io/badge/MCP-17%20tools-green.svg" alt="MCP Tools"></a>
 </p>
 
 ---
 
 ## Why memory-v2?
+
+```bash
+pip install memory-v2-hx
+```
 
 Most AI memory systems are just databases with a search API. memory-v2 is a **cognitive architecture** -- it models how human memory actually works.
 
